@@ -117,7 +117,7 @@ class RadarDiagram():
         ]
         return data
     def draw(self, filename, data, label, title):
-        N = 28
+        N = 15
         theta = self.radar_factory(N, frame='polygon')
 
         # data = self.example_data()

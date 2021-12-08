@@ -52,20 +52,7 @@ def handle(ui):
             float(ui.begin_expression_lineEdit_12.text()),
             float(ui.begin_expression_lineEdit_13.text()),
             float(ui.begin_expression_lineEdit_14.text()),
-            float(ui.begin_expression_lineEdit_15.text()),
-            float(ui.begin_expression_lineEdit_16.text()),
-            float(ui.begin_expression_lineEdit_17.text()),
-            float(ui.begin_expression_lineEdit_18.text()),
-            float(ui.begin_expression_lineEdit_19.text()),
-            float(ui.begin_expression_lineEdit_20.text()),
-            float(ui.begin_expression_lineEdit_21.text()),
-            float(ui.begin_expression_lineEdit_22.text()),
-            float(ui.begin_expression_lineEdit_23.text()),
-            float(ui.begin_expression_lineEdit_24.text()),
-            float(ui.begin_expression_lineEdit_25.text()),
-            float(ui.begin_expression_lineEdit_26.text()),
-            float(ui.begin_expression_lineEdit_27.text()),
-            float(ui.begin_expression_lineEdit_28.text())
+            float(ui.begin_expression_lineEdit_15.text())
         ],
         [
             [float(ui.expression_lineEdit_1_1.text()), float(ui.expression_lineEdit_1_2.text()),
@@ -199,7 +186,7 @@ def recreate(new_expression, part):
 def create_graphic(t, data):
     fig, axs = plt.subplots(figsize=(15, 10))
     plt.subplot(1, 1, 1)
-    for i in range(28):
+    for i in range(15):
         plt.plot(t, data[:, i])
     plt.legend(loc='best')
     plt.xlabel('t')
@@ -221,34 +208,21 @@ def create_graphic(t, data):
 
 def labels_array():
     return [
-        "сопровождаемость",
-        "анализируемость",
-        "изменяемость",
-        "стабильность",
-        "тестируемость",
-        "согласованность",
-        "несоответствие комплектности",
-        "несоответствие стандартам",
-        "отсутствие лицензии на ПО",
-        "невысокий уровень используемого языка",
-        "отсутствие иерархии модулей ПО",
-        "низкая читабельность кода",
-        "недостаточно комментариев",
-        "отсутствие системного подхода при выделении модулей",
-        "слишком большие модули",
-        "недостатки средств диагностики",
-        "недостаточность средств регистрации процесса выполнения",
-        "высокая трудоемкость внесения изменений",
-        "низкий уровень параметризации",
-        "низкая локальность модификации",
-        "вторичные дефекты после модификации",
-        "недостаточность требований к тестированию ПО",
-        "отсутствие описания методов испытаний ПО",
-        "невозможность разработки теста для выполенния требований",
-        "невозможность использования средств тестирования",
-        "несоответствие требованиям стандартов сопровождаемости",
-        "несоответствие требованиям к исходным текстам программ",
-        "отсутствие регистрации изменений"
+        "летальность",
+        "численность инфицированных",
+        "численность цивилизации",
+        "численность госпитализированных",
+        "изолированность",
+        "скорость распространения",
+        "доступность лекарства",
+        "тяжесть симптомов",
+        "количество умерших от заболевания",
+        "уровень медицины",
+        "длительность инкубационного периода",
+        "длительность периода полного развития болезни",
+        "длительность реабилитационного периода",
+        "устойчивость вируса к лекарствам",
+        "степень осложнений заболевания"
     ]
 
 def process(ui, numbers):
