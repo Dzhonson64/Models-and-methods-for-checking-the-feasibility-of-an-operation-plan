@@ -107,7 +107,7 @@ class RadarDiagram():
         data = list(data)
         for i, elem in enumerate(data):
             for j, elem2 in enumerate(elem):
-                if (elem2 > 1):
+                if (elem2 > 1 and elem2 < 0):
                     data[i][j] = 0
         # data = np.fromiter((element for element in data[0] if element <= 1), dtype = data[0].dtype)
         np.average(data)
