@@ -55,17 +55,13 @@ def handle(ui):
             float(ui.begin_expression_lineEdit_15.text())
         ],
         [
-            [float(ui.expression_lineEdit_1_1.text()), float(ui.expression_lineEdit_1_2.text()),
-             float(ui.expression_lineEdit_1_3.text()), float(ui.expression_lineEdit_1_4.text())],
-            [float(ui.expression_lineEdit_2_1.text()), float(ui.expression_lineEdit_2_1.text())],
-            [float(ui.expression_lineEdit_3_1.text()), float(ui.expression_lineEdit_3_2.text()),
-             float(ui.expression_lineEdit_3_3.text())],
-            [float(ui.expression_lineEdit_4_1.text()), float(ui.expression_lineEdit_4_2.text())],
-            [float(ui.expression_lineEdit_5_1.text()), float(ui.expression_lineEdit_5_2.text()),
-             float(ui.expression_lineEdit_5_3.text())],
-            [float(ui.expression_lineEdit_6_1.text()), float(ui.expression_lineEdit_6_2.text())],
-            [float(ui.expression_lineEdit_7_1.text()), float(ui.expression_lineEdit_7_2.text()),
-             float(ui.expression_lineEdit_7_3.text())],
+            [float(ui.expression_lineEdit_1_1.text()), float(ui.expression_lineEdit_1_2.text()), float(ui.expression_lineEdit_1_3.text()), float(ui.expression_lineEdit_1_4.text())],
+            [float(ui.expression_lineEdit_2_1.text()), float(ui.expression_lineEdit_2_2.text()), float(ui.expression_lineEdit_2_3.text()), float(ui.expression_lineEdit_2_4.text())],
+            [float(ui.expression_lineEdit_3_1.text()), float(ui.expression_lineEdit_3_2.text()), float(ui.expression_lineEdit_3_3.text()),  float(ui.expression_lineEdit_3_6.text())],
+            [float(ui.expression_lineEdit_4_1.text()), float(ui.expression_lineEdit_4_2.text()), float(ui.expression_lineEdit_4_3.text()),  float(ui.expression_lineEdit_4_4.text())],
+            [float(ui.expression_lineEdit_5_1.text()), float(ui.expression_lineEdit_5_2.text()), float(ui.expression_lineEdit_5_3.text()), float(ui.expression_lineEdit_5_4.text())],
+            [float(ui.expression_lineEdit_6_1.text()), float(ui.expression_lineEdit_6_2.text()), float(ui.expression_lineEdit_6_3.text()), float(ui.expression_lineEdit_6_4.text())],
+            [float(ui.expression_lineEdit_7_1.text()), float(ui.expression_lineEdit_7_2.text()), float(ui.expression_lineEdit_7_3.text()), float(ui.expression_lineEdit_7_4.text())],
         ]
     ]))
 
@@ -195,6 +191,7 @@ def create_graphic(t, data):
     plt.grid()
 
     plt.xlim([0, 1])
+    plt.ylim([0, 1])
     draw_third_graphic(t)
     #
     # plt.subplot(121)

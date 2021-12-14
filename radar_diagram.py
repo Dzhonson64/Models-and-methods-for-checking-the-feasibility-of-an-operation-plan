@@ -90,57 +90,40 @@ class RadarDiagram():
         register_projection(RadarAxes)
         return theta
 
-    def example_data(self):
-        # The following data is from the Denver Aerosol Sources and Health study.
-        # See doi:10.1016/j.atmosenv.2008.12.017
-        #
-        # The data are pollution source profile estimates for five modeled
-        # pollution sources (e.g., cars, wood-burning, etc) that emit 7-9 chemical
-        # species. The radar charts are experimented with here to see if we can
-        # nicely visualize how the modeled source profiles change across four
-        # scenarios:
-        #  1) No gas-phase species present, just seven particulate counts on
-        #     Sulfate
-        #     Nitrate
-        #     Elemental Carbon (EC)
-        #     Organic Carbon fraction 1 (OC)
-        #     Organic Carbon fraction 2 (OC2)
-        #     Organic Carbon fraction 3 (OC3)
-        #     Pyrolized Organic Carbon (OP)
-        #  2)Inclusion of gas-phase specie carbon monoxide (CO)
-        #  3)Inclusion of gas-phase specie ozone (O3).
-        #  4)Inclusion of both gas-phase species is present...
-        data = [
-            ['Sulfate', 'Nitrate', 'EC', 'OC1', 'OC2', 'OC3', 'OP', 'CO', 'O3'],
-            ('Basecase', [
-                [0.88, 0.01, 0.03, 0.03, 0.00, 0.06, 0.01, 0.00, 0.00]])
-        ]
-        return data
+
     def draw(self, filename, data, label, title):
         N = 15
         theta = self.radar_factory(N, frame='polygon')
 
         # data = self.example_data()
         spoke_labels = label
-
+        plt.xlim([0, 1])
+        plt.ylim([0, 1])
         fig, axs = plt.subplots(figsize=(12, 12), subplot_kw=dict(projection='radar'))
         fig.subplots_adjust(wspace=1, hspace=1, top=0.85, bottom=0.05)
-
         colors = ['b', 'r']
         # Plot the four cases from the example data on separate axes
         # for s in slice:
+        data = list(data)
+        for i, elem in enumerate(data):
+            for j, elem2 in enumerate(elem):
+                if (elem2 > 1):
+                    data[i][j] = 0
+        # data = np.fromiter((element for element in data[0] if element <= 1), dtype = data[0].dtype)
         np.average(data)
         axs.set_rgrids((np.min(data),  (np.min(data) + np.max(data))/2, np.max(data)*3/4, np.max(data)))
         # axs.set_title(title, weight='bold', size='medium', position=(0.5, 1.1),
         #               horizontalalignment='center', verticalalignment='center')
 
         for ind, i in enumerate(data):
-            axs.plot(theta, i, color=colors[ind])
-        # axs.fill(theta, d, facecolor=color, alpha=0.25)
+            axs.plot(theta, i, color=colors[ind], alpha=0.4)
+            axs.fill(theta, i, facecolor=colors[ind], alpha=0.25)
+            # axs.set_ylim([0, 1])
+            # axs.set_xlim([0, 1])
         axs.set_varlabels(spoke_labels)
 
         # add legend relative to top-left plot
-        labels = ('Начальные вычисления', 'Вычисления через 1/4 проходов', 'Вычисления через 3/4 проходов', 'Конечные вычисления')
+        labels = ('Начальные вычисления', 'Вычисления через 1/4 проходов')
         legend = axs.legend(labels, loc=(-.13, .99),
                             labelspacing=0.1, fontsize='medium')
 

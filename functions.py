@@ -99,54 +99,60 @@ def process_part_of_expression(u,
 
 
 def fak_1(t):
-    return t ** 2 + 1
+    return t * 2 + 1
 
 
 def fak_2(t):
-    return np.cos(1.5 * t * np.pi - np.pi / 6) ** 2 / 4 + 0.2
+    return t * 5 + 3
 
 
 def fak_3(t):
-    return np.sin(t * np.pi - np.pi / 6) / 2.5 + 0.3
+    return np.sin(np.pi / 2)
 
 
 def fak_4(t):
-    return 2 * t - 1
+    return np.sin(np.pi / 3)
 
 
 def fak_5(t):
-    return np.cos(1.5 * t * np.pi - np.pi / 6) ** 2 / 4
+    return t ** 2 + 3
 
 
 def fak_6(t):
-    return np.sin(t * np.pi - np.pi / 6) ** 2 / 2.5 + 0.3
+    return t ** 2 + 2
+
+def fak_7(t):
+    return t
+
+def fak_8(t):
+    return t
 
 
 def pend(u, t, dict_of_function_expressions, new_function_list):
     dudt = [
         # 0
         (process_part_of_expression(u,
-                                    [fak_3],
+                                    [fak_3, fak_4],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list, 0, 0)
          -
          process_part_of_expression(u,
-                                    [fak_1, fak_2, fak_4, fak_5],
+                                    [fak_1, fak_2, fak_5, fak_6],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list, 0, 1)),
 
         # 1
         (process_part_of_expression(u,
-                                    [fak_3],
+                                    [fak_3, fak_4, fak_7],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
                                     1, 0)
          -
          process_part_of_expression(u,
-                                    [fak_1, fak_5],
+                                    [fak_1, fak_5, fak_6, fak_8],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
@@ -169,14 +175,14 @@ def pend(u, t, dict_of_function_expressions, new_function_list):
 
         # 3
         (process_part_of_expression(u,
-                                    [fak_4, fak_5],
+                                    [fak_4, fak_5, fak_7],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
                                     3, 0)
          -
          process_part_of_expression(u,
-                                    [],
+                                    [fak_6],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
@@ -184,7 +190,7 @@ def pend(u, t, dict_of_function_expressions, new_function_list):
 
         # 4
         (process_part_of_expression(u,
-                                    [fak_4, fak_5],
+                                    [fak_5, fak_8],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
@@ -198,14 +204,14 @@ def pend(u, t, dict_of_function_expressions, new_function_list):
 
         # 5
         (process_part_of_expression(u,
-                                    [fak_5],
+                                    [fak_5, fak_7],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
                                     5, 0)
          -
          process_part_of_expression(u,
-                                    [fak_1, fak_4],
+                                    [fak_1, fak_8],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
@@ -213,7 +219,7 @@ def pend(u, t, dict_of_function_expressions, new_function_list):
 
         # 6
         (process_part_of_expression(u,
-                                    [fak_2, fak_4],
+                                    [fak_2],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
@@ -242,14 +248,14 @@ def pend(u, t, dict_of_function_expressions, new_function_list):
 
         # 8
         (process_part_of_expression(u,
-                                    [fak_3],
+                                    [fak_3, fak_4],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
                                     8, 0)
          -
          process_part_of_expression(u,
-                                    [],
+                                    [fak_6],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
@@ -257,7 +263,7 @@ def pend(u, t, dict_of_function_expressions, new_function_list):
 
         # 9
         (process_part_of_expression(u,
-                                    [fak_1, fak_2, fak_3, fak_4, fak_5],
+                                    [fak_1, fak_2, fak_3, fak_5],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
@@ -332,7 +338,7 @@ def pend(u, t, dict_of_function_expressions, new_function_list):
 
         # 14
         (process_part_of_expression(u,
-                                    [],
+                                    [fak_7],
                                     t,
                                     dict_of_function_expressions,
                                     new_function_list,
