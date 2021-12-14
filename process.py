@@ -190,8 +190,6 @@ def create_graphic(t, data):
                             labelspacing=0.1, fontsize='small')
     plt.grid()
 
-    plt.xlim([0, 1])
-    plt.ylim([0, 1])
     draw_third_graphic(t)
     #
     # plt.subplot(121)

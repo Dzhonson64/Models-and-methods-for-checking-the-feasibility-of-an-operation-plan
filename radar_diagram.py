@@ -97,20 +97,13 @@ class RadarDiagram():
 
         # data = self.example_data()
         spoke_labels = label
-        plt.xlim([0, 1])
-        plt.ylim([0, 1])
         fig, axs = plt.subplots(figsize=(12, 12), subplot_kw=dict(projection='radar'))
         fig.subplots_adjust(wspace=1, hspace=1, top=0.85, bottom=0.05)
         colors = ['b', 'r']
         # Plot the four cases from the example data on separate axes
         # for s in slice:
         data = list(data)
-        for i, elem in enumerate(data):
-            for j, elem2 in enumerate(elem):
-                if (elem2 > 1 ):
-                    data[i][j] = 1
-                if ( elem2 < 0):
-                    data[i][j] = 0
+
         # data = np.fromiter((element for element in data[0] if element <= 1), dtype = data[0].dtype)
         np.average(data)
         axs.set_rgrids((np.min(data),  (np.min(data) + np.max(data))/2, np.max(data)*3/4, np.max(data)))
