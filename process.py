@@ -3,7 +3,7 @@ import numpy as np
 from scipy.integrate import odeint
 from ui_dialog import *
 from radar_diagram import RadarDiagram
-from functions import pend, function_list, fak_1, fak_2, fak_3, fak_4, fak_5, fak_6
+from functions import pend, function_list, fak_1, fak_2, fak_3, fak_4, fak_5, fak_6, fak_7, fak_8
 from random import randint
 
 # словать ф-ий, key - индекс выбранной ф-ии, value - соотвевующее уравнение
@@ -132,6 +132,8 @@ def draw_third_graphic(t):
     y4 = []
     y5 = []
     y6 = []
+    y7 = []
+    y8 = []
     for i in t:
         y1.append(fak_1(i))
         y2.append(fak_2(i))
@@ -139,12 +141,16 @@ def draw_third_graphic(t):
         y4.append(fak_4(i))
         y5.append(fak_5(i))
         y6.append(fak_6(i))
-    plt.plot(t, y1, label='Fak1')
-    plt.plot(t, y2, label='Fak2')
-    plt.plot(t, y3, label='Fak3')
-    plt.plot(t, y4, label='Fak4')
-    plt.plot(t, y5, label='Fak5')
-    plt.plot(t, y6, label='Fak6')
+        y7.append(fak_7(i))
+        y8.append(fak_8(i))
+    plt.plot(t, y1, label='y = 2x+1')
+    plt.plot(t, y2, label='y = 5x+3')
+    plt.plot(t, y3, label='y = sin(pi/2)')
+    plt.plot(t, y4, label='y = sin(pi/3)')
+    plt.plot(t, y5, label='y = x^2+3')
+    plt.plot(t, y6, label='y = x^2+2')
+    plt.plot(t, y7, label='y = x')
+    plt.plot(t, y8, label='y = x')
     plt.legend(loc='best')
     plt.xlabel('t')
     plt.grid()
@@ -152,11 +158,12 @@ def draw_third_graphic(t):
 
 def fillDiagrams(ui, data, labels):
     radar1 = RadarDiagram()
-    radar1.draw('./diagram.png', [data[0]], labels, "Характеристики системы в начальный момент времени")
-    radar1.draw('./diagram2.png', (data[0], data[int(len(data)/4)]), labels, "Характеристики системы в 1 четверти")
-    radar1.draw('./diagram3.png', (data[0], data[int(len(data)/2)]), labels, "Характеристики системы во 2 четверти")
-    radar1.draw('./diagram4.png', (data[0], data[int(len(data))-1]), labels, "Характеристики системы в 3 четверти")
-    radar1.draw('./diagram5.png', (data[0], data[int(len(data))-1]), labels, "Характеристики системы в последний момент времени")
+    fixed_data = [0.1, 0.1, 0.4, 0.3, 0.4, 0.4, 0.35, 0.1, 0.25, 0.25, 0.25, 0.1, 0.25, 0.1, 0.25,]
+    radar1.draw('./diagram.png', [data[0], fixed_data], labels, "Характеристики системы в начальный момент времени")
+    radar1.draw('./diagram2.png', (data[int(len(data)/4)], fixed_data ), labels, "Характеристики системы в 1 четверти")
+    radar1.draw('./diagram3.png', (data[int(len(data)/2)], fixed_data ), labels, "Характеристики системы во 2 четверти")
+    radar1.draw('./diagram4.png', (data[int(len(data))-1], fixed_data ), labels, "Характеристики системы в 3 четверти")
+    radar1.draw('./diagram5.png', (data[int(len(data))-1], fixed_data ), labels, "Характеристики системы в последний момент времени")
     ui.label_53.setPixmap(QtGui.QPixmap('./diagram.png'))
     ui.label_54.setPixmap(QtGui.QPixmap('./diagram2.png'))
     ui.label_38.setPixmap(QtGui.QPixmap('./diagram3.png'))
